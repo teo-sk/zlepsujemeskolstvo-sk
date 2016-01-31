@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Mailing
@@ -25,6 +26,10 @@ class Mailing
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255)
+     * @Assert\Email(
+     *     message = "'{{ value }}' nie je validný email.",
+     *     checkMX = true
+     * )
      */
     private $email;
 
@@ -48,6 +53,11 @@ class Mailing
      * @ORM\Column(name="fingerprint", type="json_array")
      */
     private $fingerprint;
+
+    public function __construct()
+    {
+        $this->created = new \DateTime();
+    }
 
 
     /**

@@ -179,16 +179,7 @@
         Newsletter
     </h3>
     <p>Zadajte svoj e-mail, aby sme vám mohli dať vedieť, keď spustíme ďaľsie funkcie tejto stránky</p>
-    <!--@todo: replace with mailchimp code-->
-    <form role="form">
-        <div class="input-group input-group-sm">
-          <label class="sr-only" for="email-field">Email</label>
-          <input type="text" class="form-control" id="email-field" placeholder="Email">
-          <span class="input-group-btn">
-            <button class="btn btn-primary" type="button">Poslať</button>
-        </span>
-    </div>
-</form>
+    {% block mailForm %}{% endblock %}
 </div>
 </div>
 </div>

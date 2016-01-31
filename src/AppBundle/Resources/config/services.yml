@@ -10,3 +10,9 @@ services:
         arguments: [~, AppBundle\Entity\Suggestion, SonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Suggestion}
+
+    app.admin.mailing:
+        class: AppBundle\Admin\MailingAdmin
+        arguments: [~, AppBundle\Entity\Mailing, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Mailing}

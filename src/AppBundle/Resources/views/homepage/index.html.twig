@@ -1,5 +1,6 @@
         {% extends 'base.html.twig' %}
         {% form_theme form 'bootstrap_3_layout.html.twig' %}
+        {% form_theme mailingForm 'bootstrap_3_layout.html.twig' %}
 
         {% block title %}Zlepšujeme školstvo{% endblock %}
 
@@ -97,4 +98,22 @@
     </div>
     </div>
     </div>
+    {% endblock %}
+
+    {% block mailForm %}
+        {% if showMailingForm %}
+            {{ form_start(mailingForm) }}
+                {{ form_errors(mailingForm) }}
+                <div class="input-group input-group-sm">
+                  <label class="sr-only" for="email-field">Email</label>
+                  {{ form_widget(mailingForm.email) }}
+                    <span class="input-group-btn">
+                        {{ form_widget(mailingForm.fingerprint) }}
+                        {{ form_widget(mailingForm.submit) }}
+                    </span>
+                </div>
+            {{ form_end(mailingForm) }}
+        {% else %}
+            <small><strong>Ďakujeme, váš e-mail bol pridaný.</strong></small>
+        {% endif %}
     {% endblock %}
