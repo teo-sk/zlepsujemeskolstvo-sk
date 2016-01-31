@@ -3,6 +3,7 @@
 
 parameters:
 #    parameter_name: value
+    security.acl.permission.map.class: Sonata\AdminBundle\Security\Acl\Permission\AdminPermissionMap
 
 services:
 #    service_name:
