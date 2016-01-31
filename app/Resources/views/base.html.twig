@@ -1,13 +1,229 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <title>{% block title %}{% endblock %}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- @todo: fill with your company info or remove -->
+  <meta name="description" content="">
+  <meta name="author" content="digital_nomads">
+  
+  <!-- Bootstrap CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- Plugins required on all pages NOTE: Additional non-required plugins are loaded ondemand as of AppStrap 2.5 -->
+  <!-- Plugin: animate.css (animated effects) - http://daneden.github.io/animate.css/ -->
+  <link href="plugins/animate/animate.css" rel="stylesheet">
+  <!-- @LINEBREAK -- <!-- Plugin: flag icons - http://lipis.github.io/flag-icon-css/ -->
+  <link href="plugins/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+  
+  <!-- Theme style -->
+  <link href="css/theme-style.min.css" rel="stylesheet">
+  
+  <!--Your custom colour override-->
+  <!-- <link href="#" id="colour-scheme" rel="stylesheet"> -->
+  
+  <!-- Your custom override -->
+  <link href="css/custom-style.css" rel="stylesheet">
+  
+  <!-- HTML5 shiv & respond.js for IE6-8 support of HTML5 elements & media queries -->
+  <!--[if lt IE 9]>
+  <script src="plugins/html5shiv/dist/html5shiv.js"></script>
+  <script src="plugins/respond/respond.min.js"></script>
+  <![endif]-->
+  
+  <!-- Le fav and touch icons - @todo: fill with your icons or remove -->
+  <link rel="shortcut icon" href="img/icons/favicon.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/icons/114x114.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/icons/72x72.png">
+  <link rel="apple-touch-icon-precomposed" href="img/icons/default.png">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Rambla' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Calligraffitti' rel='stylesheet' type='text/css'>
+  
+  <!--Plugin: Retina.js (high def image replacement) - @see: http://retinajs.com/-->
+  <script src="plugins/retina/dist/retina.min.js"></script>
+</head>
+<!-- ======== @Region: body ======== -->
+<body class="page page-index-static">
+    <a href="#content" class="sr-only">Skip to content</a> 
+    
+    <!-- ======== @Region: #navigation ======== -->
+    <div id="navigation" class="wrapper">
+      <div class="navbar-static-top">
+
+<!--Header upper region-->
+<div class="header-upper">
+  <div class="header-upper-inner container">
+    <div class="row">
+      <div class="col-xs-8 col-xs-push-4">
+
+
+      <!--social media icons-->
+      <div class="social-media">
+          <!--@todo: replace with company social media details-->
+          <a href="#"> <i class="fa fa-twitter-square"></i> </a>
+          <a href="#"> <i class="fa fa-facebook-square"></i> </a>
+      </div>
+  </div>
+  <div class="col-xs-4 col-xs-pull-8">
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!--Header search region - hidden by default -->
+<div class="header-search">
+    <form class="search-form container">
+      <input type="text" name="search" class="form-control search" value="" placeholder="Vyhľadávanie pribudne čoskoro...">
+      <button type="button" class="btn btn-link"><span class="sr-only">Search </span><i class="fa fa-search fa-flip-horizontal search-icon"></i></button>
+      <button type="button" class="btn btn-link close-btn" data-toggle="search-form-close"><span class="sr-only">Close </span><i class="fa fa-times search-icon"></i></button>
+  </form>
+</div>
+
+<!--Header & Branding region-->
+<div class="header" data-toggle="clingify">
+    <div class="header-inner container">
+      <div class="navbar">
+        <div class="pull-left">
+          <!--branding/logo-->
+          <a class="navbar-brand" href="index.htm" title="Home">
+            <h1>
+              <span>Zlepšujeme</span>školstvo<span>.sk</span>
+          </h1>
+      </a>
+      <div class="slogan">občianska iniciatíva</div>
+  </div>
+
+  <!--Search trigger -->
+  <a href="#search" class="search-form-tigger" data-toggle="search-form" data-target=".header-search">
+  </span>
+  <i class="fa fa-search fa-flip-horizontal search-icon"></i>
+</a>
+
+<!-- mobile collapse menu button - data-toggle="toggle" = default BS menu - data-toggle="jpanel-menu" = jPanel Menu -->
+<a href="#top" class="navbar-btn" data-toggle="jpanel-menu" data-target=".navbar-collapse" data-direction="right"><i class="fa fa-bars"></i></a>
+
+<!--everything within this div is collapsed on mobile-->
+<div class="navbar-collapse collapse">
+    <!--main navigation-->
+    <ul class="nav navbar-nav">
+      <li class="home-link">
+        <a href="#top"><i class="fa fa-home"></i><span class="hidden">Home</span></a>
+      </li>
+      <li class="dropdown">
+        <a href="#add-suggestion">Pridať podnet</a>
+      </li>
+      <li class="dropdown">
+        <a href="#newest-suggestions">Najnovšie podnety</a>
+      </li>
+      <li class="dropdown">
+        <a href="#"><i class="fa fa-external-link"></i>&nbsp;Blog</a>
+      </li>
+    </ul>
+</div>
+<!--/.navbar-collapse -->
+</div>
+</div>
+</div>
+</div>
+</div>
+
+{% block body %}{% endblock %}
+<!-- FOOTER -->
+
+<!-- ======== @Region: #footer ======== -->
+<footer id="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 col">
+        <div class="block contact-block">
+          <!--@todo: replace with company contact details-->
+          <h3>
+            Kontakt
+        </h3>
+        <address>
+            <ul class="fa-ul">
+            <li>
+                <abbr title="Email"><i class="fa fa-li fa-envelope"></i></abbr>
+                info@zlepsujemeskolstvo.sk
+            </li>
+            <li>
+                <abbr title="Github"><i class="fa fa-li fa-github"></i></abbr>
+                Pomôž zlepšiť túto stránku
+            </li>
+        </ul>
+    </address>
+</div>
+</div>
+
+<div class="col-md-5 col">
+    <div class="block">
+      <h3>
+        O nás
+    </h3>
+    <p>Digital Nomads, etc etc</p>
+</div>
+</div>
+
+<div class="col-md-4 col">
+    <div class="block newsletter">
+      <h3>
+        Newsletter
+    </h3>
+    <p>Zadajte svoj e-mail, aby sme vám mohli dať vedieť, keď spustíme ďaľsie funkcie tejto stránky</p>
+    <!--@todo: replace with mailchimp code-->
+    <form role="form">
+        <div class="input-group input-group-sm">
+          <label class="sr-only" for="email-field">Email</label>
+          <input type="text" class="form-control" id="email-field" placeholder="Email">
+          <span class="input-group-btn">
+            <button class="btn btn-primary" type="button">Poslať</button>
+        </span>
+    </div>
+</form>
+</div>
+</div>
+</div>
+
+<div class="row">
+  <div id="toplink">
+    <a href="#top" class="top-link" title="Back to top">Hore <i class="fa fa-chevron-up"></i></a>
+</div>
+<!--@todo: replace with company copyright details-->
+<div class="subfooter">
+    <div class="col-md-6">
+      <p>Bootstrap téma od <a href="appstraptheme.com">AppStrap</a> | Copyright 2016 &copy; DigitalNomads</p>
+  </div>
+  <div class="col-md-6">
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!--Hidden elements - excluded from jPanel Menu on mobile-->
+<div class="hidden-elements jpanel-menu-exclude">
+  
+</div>
+
+
+<!--Scripts -->
+<script src="js/jquery.min.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="js/bootstrap.min.js"></script>
+
+
+<!-- JS plugins required on all pages NOTE: Additional non-required plugins are loaded ondemand as of AppStrap 2.5 -->
+
+<!--Custom scripts mainly used to trigger libraries/plugins -->
+<script src="js/script.min.js"></script>
+</body>
 </html>
