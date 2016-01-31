@@ -4,3 +4,9 @@ services:
         arguments: [~, AppBundle\Entity\Category, SonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Category}
+
+    app.admin.suggestion:
+        class: AppBundle\Admin\SuggestionAdmin
+        arguments: [~, AppBundle\Entity\Suggestion, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Suggestion}
