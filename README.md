@@ -16,6 +16,7 @@ K práci so Symfony2 potrebuješ [composer](https://getcomposer.org/download/). 
 * `php bin/console server:run`
 * následne na http://127.0.0.1:8000/config.php si skontroluj či tvoj systém splňa požiadavky na symfony
 * `php bin/console fos:user:create --super-admin` - vygeneruj si superadmin užívateľa
+* `php bin/console sonata:admin:setup-acl`
 
 Následne na http://127.0.0.1:8000 nájdeš aplikáciu a na http://127.0.0.1:8000/admin administrátorské rozhranie.
 

@@ -53,7 +53,7 @@ class SuggestionAdmin extends Admin
             ->add('email')
             ->add('text')
             ->add('created')
-            ->add('approved')
+            ->add('approved', null, array('label' => 'Approved'))
             ->add('ip')
             ->add('fingerprint')
         ;
