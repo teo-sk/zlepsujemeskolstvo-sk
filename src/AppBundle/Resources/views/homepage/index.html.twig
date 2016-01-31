@@ -1,4 +1,5 @@
         {% extends 'base.html.twig' %}
+        {% form_theme form 'bootstrap_3_layout.html.twig' %}
 
         {% block title %}Zlepšujeme školstvo{% endblock %}
 
@@ -25,6 +26,16 @@
       </div>
     </div>
 
+    <div id="content-below" class="wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="upsell">
+            <small class="muted">Ak sa chcete dozvedieť, kedy spustíme ďaľšie funkcie tejto stránky, zadajte svoj mail do formulára v pätičke.</small>
+        </div>
+    </div>
+    </div>
+    </div>
+
     <!-- ======== @Region: #content ======== -->
     <div id="content">
       <div class="container">
@@ -35,7 +46,22 @@
             <small>Pridajte váš podnet na zlepšenie školstva.</small>
         </h2>
         <div class="row">
-            <p>foo</p>
+            {% if showForm %}
+            {{ form_start(form, { 'attr' : { 'class': 'form-wrapper' } }) }}
+                {{ form_errors(form) }}
+
+                {{ form_row(form.category) }}
+                {{ form_row(form.email) }}
+                {{ form_row(form.text, { 'attr': { 'rows': '20' }}) }}
+            {{ form_end(form) }}
+            {% else %}
+                <div class="alert alert-success">
+                  <h4>
+                    Ďakujeme!
+                  </h4>
+                  Váš podnet bol odoslaný na schválenie a objaví sa tu čoskoro.
+                </div>
+            {% endif %}
         </div>
     </div>
     <!--Customer testimonial-->

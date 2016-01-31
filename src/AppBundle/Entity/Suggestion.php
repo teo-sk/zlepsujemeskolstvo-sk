@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Suggestion
@@ -25,12 +26,17 @@ class Suggestion
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255)
+     * @Assert\Email(
+     *     message = "'{{ value }}' nie je validný email.",
+     *     checkMX = true
+     * )
      */
     private $email;
 
     /**
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="suggestions")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     * @Assert\NotBlank()
      */
     private $category;
 
@@ -38,6 +44,7 @@ class Suggestion
      * @var string
      *
      * @ORM\Column(name="text", type="text")
+     * @Assert\NotBlank()
      */
     private $text;
 
@@ -53,7 +60,7 @@ class Suggestion
      *
      * @ORM\Column(name="approved", type="boolean")
      */
-    private $approved;
+    private $approved = false;
 
     /**
      * @var string
@@ -68,6 +75,11 @@ class Suggestion
      * @ORM\Column(name="fingerprint", type="json_array")
      */
     private $fingerprint;
+
+    public function __construct()
+        {
+            $this->created = new \DateTime();
+        }
 
 
     /**

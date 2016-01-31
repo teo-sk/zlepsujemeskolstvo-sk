@@ -39,6 +39,11 @@ class Category
         $this->suggestions = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
+
 
     /**
      * Get id
