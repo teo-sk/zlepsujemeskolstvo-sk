@@ -9,5 +9,4 @@ namespace AppBundle\Repository;
  * repository methods below.
  */
 class SuggestionRepository extends \Doctrine\ORM\EntityRepository
-{
-}
+{}
