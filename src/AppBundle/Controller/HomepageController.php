@@ -57,13 +57,23 @@ class HomepageController extends Controller
             ->getQuery();
         $suggestions = $query->getResult();
 
+        //fetch count
+        $count = $repo->createQueryBuilder('s')
+            ->select('COUNT(s)')
+            ->where('s.approved = :bool')
+            ->setParameter('bool', true)
+            ->getQuery()
+            ->getSingleScalarResult();
+
+
         //show view
         return $this->render('AppBundle:homepage:index.html.twig', array(
             'form' => $form->createView(),
             'showForm' => $showForm,
             'mailingForm' => $mailingForm->createView(),
             'showMailingForm' => $showMailingForm,
-            'suggestions' => $suggestions
+            'suggestions' => $suggestions,
+            'count' => $count
         ));
     }
 }
