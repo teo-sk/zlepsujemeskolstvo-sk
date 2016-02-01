@@ -5,7 +5,7 @@ Zdrojový kód aplikácie ZlepsujemeSkolstvo.sk na zbieranie konštruktívnych p
 
 Aplikácia je napísaná v PHP frameworku [Symfony 2.8](http://symfony.com/doc/2.8/index.html)
 
-Ak chceš pomôcť s vývojom, pozri si Issues a pridaj komentár, ak ideš niektorú riešiť. Po vyriešení sprav štandardný Pull Request, ktorý po reviewnutí mergneme a nasadíme; tým aj ty pomôžeš zlepšiť naše školstvo.
+Ak chceš pomôcť s vývojom, pozri si [Issues](https://github.com/teo-sk/zlepsujemeskolstvo-sk/issues) a pridaj komentár, ak ideš niektorú riešiť. Po vyriešení sprav štandardný Pull Request, ktorý po reviewnutí mergneme a nasadíme; tým aj ty pomôžeš zlepšiť naše školstvo.
 
 K práci so Symfony2 potrebuješ [composer](https://getcomposer.org/download/). Ak ho máš, aplikáciu si rozbeháš takto:
 
