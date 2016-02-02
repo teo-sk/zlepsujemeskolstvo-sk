@@ -19,7 +19,9 @@ class SuggestionType extends AbstractType
                     'label' => 'Kategória'
                 ))
             ->add('email')
-            ->add('text')
+            ->add('text', null, array(
+                    'label' => "Váš podnet (Maximálne 1800 znakov)"
+                ))
             ->add('fingerprint', 'hidden')
             ->add('submit', 'submit', array(
                     'label' => 'Odoslať',

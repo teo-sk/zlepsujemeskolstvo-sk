@@ -77,7 +77,7 @@
                 <div class="panel panel-default">
                   <div class="panel-heading"> <a data-toggle="collapse" data-parent="#list-accordion" href="#collapse{{loop.index}}" class="panel-title collapsed" aria-expanded="false">Pridané v kategórii <strong>{{sug.category}}</strong> dňa <em>{{sug.created |date("d. m. Y")}}</em></a> </div>
                   <div id="collapse{{loop.index}}" class="collapse" aria-expanded="false" style="height: 0px;">
-                    <div class="panel-body">{{sug.text}}</div>
+                    <div class="panel-body">{{sug.text|nl2br}}</div>
                   </div>
                 </div>
             {% endfor %}
