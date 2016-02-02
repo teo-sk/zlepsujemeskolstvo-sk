@@ -29,9 +29,14 @@ class HomepageController extends Controller
             $em->persist($suggestion);
             $em->flush();
 
-            return $this->redirectToRoute('homepage', array('form' => 'thanks'));
+            $this->addFlash(
+                        'form',
+                        'thanks'
+                    );
+            return $this->redirectToRoute('homepage');
         }
-        $showForm = ($request->query->get('form') !== 'thanks');
+        $flash = $this->get('session')->getFlashBag()->get('form');
+        $showForm = !(!empty($flash) && $flash[0] === 'thanks');
 
         //handle newsletter submit
         $mailing = new Mailing();
@@ -43,9 +48,14 @@ class HomepageController extends Controller
             $em->persist($mailing);
             $em->flush();
 
-            return $this->redirectToRoute('homepage', array('mailingForm' => 'thanks'));
+            $this->addFlash(
+                        'mailingForm',
+                        'thanks'
+                    );
+            return $this->redirectToRoute('homepage');
         }
-        $showMailingForm = ($request->query->get('mailingForm') !== 'thanks');
+        $flash = $this->get('session')->getFlashBag()->get('mailingForm');
+        $showMailingForm = !(!empty($flash) && $flash[0] === 'thanks');
 
         //load shortlist of newest suggestions
         $repo = $em->getRepository('AppBundle:Suggestion');
