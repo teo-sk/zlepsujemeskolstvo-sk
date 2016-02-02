@@ -6,9 +6,8 @@ $(function() {
       $('#appbundle_mailing_fingerprint').val(JSON.stringify(fingerprint));
     });
 
-    $('.jumbo-more').hide();
     $('.show-jumbo-more').click(function() {
-        $('.show-jumbo-more').hide();
+        $('.jumbo-less').hide();
         $('.jumbo-more').show();
     });
 });
