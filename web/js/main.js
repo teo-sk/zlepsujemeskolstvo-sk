@@ -5,4 +5,10 @@ $(function() {
       $('#appbundle_suggestion_fingerprint').val(JSON.stringify(fingerprint));
       $('#appbundle_mailing_fingerprint').val(JSON.stringify(fingerprint));
     });
+
+    $('.jumbo-more').hide();
+    $('.show-jumbo-more').click(function() {
+        $('.show-jumbo-more').hide();
+        $('.jumbo-more').show();
+    });
 });
