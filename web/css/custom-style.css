@@ -76,3 +76,8 @@
  .header .navbar-brand h1 {
     font-family: "Open Sans",Arial,serif;
  }
+
+ .control-label.required:after {
+   content:"*";
+   color:red;
+ }
