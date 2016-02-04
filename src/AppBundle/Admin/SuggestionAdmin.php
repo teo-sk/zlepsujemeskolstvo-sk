@@ -28,6 +28,8 @@ class SuggestionAdmin extends Admin
     {
         $listMapper
             ->add('category')
+            ->add('name')
+            ->add('surname')
             ->add('email')
             ->add('text')
             ->add('created')
@@ -50,6 +52,8 @@ class SuggestionAdmin extends Admin
     {
         $formMapper
             ->add('category')
+            ->add('name')
+            ->add('surname')
             ->add('email')
             ->add('text')
             ->add('created')
@@ -66,6 +70,8 @@ class SuggestionAdmin extends Admin
     {
         $showMapper
             ->add('category')
+            ->add('name')
+            ->add('surname')
             ->add('email')
             ->add('text')
             ->add('created')

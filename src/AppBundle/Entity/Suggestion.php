@@ -22,6 +22,23 @@ class Suggestion
      */
     private $id;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
+     * @Assert\NotBlank()
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="surname", type="string", length=255, nullable=true)
+     * @Assert\NotBlank()
+     */
+    private $surname;
+
     /**
      * @var string
      *
@@ -262,5 +279,53 @@ class Suggestion
     public function getCategory()
     {
         return $this->category;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Suggestion
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set surname
+     *
+     * @param string $surname
+     *
+     * @return Suggestion
+     */
+    public function setSurname($surname)
+    {
+        $this->surname = $surname;
+
+        return $this;
+    }
+
+    /**
+     * Get surname
+     *
+     * @return string
+     */
+    public function getSurname()
+    {
+        return $this->surname;
     }
 }

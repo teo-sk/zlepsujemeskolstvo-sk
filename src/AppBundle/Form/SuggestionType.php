@@ -18,6 +18,12 @@ class SuggestionType extends AbstractType
             ->add('category', null, array(
                     'label' => 'Kategória'
                 ))
+            ->add('name', null, array(
+                    'label' => "Meno"
+                ))
+            ->add('surname', null, array(
+                    'label' => "Priezvisko"
+                ))
             ->add('email')
             ->add('text', null, array(
                     'label' => "Váš podnet (Maximálne 1800 znakov)"
