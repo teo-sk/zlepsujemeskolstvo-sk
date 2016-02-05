@@ -26,8 +26,12 @@ class HomepageController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $suggestion->setIp($request->getClientIp());
 
+            $admin = $this->get('app.admin.suggestion');
+
             $em->persist($suggestion);
             $em->flush();
+
+            $admin->createObjectSecurity($suggestion);
 
             $this->addFlash(
                         'form',
