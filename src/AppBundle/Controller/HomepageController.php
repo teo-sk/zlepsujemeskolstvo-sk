@@ -43,18 +43,12 @@ class HomepageController extends BaseController
             return $this->redirectToRoute('homepage');
         }
 
-        //load shortlist of newest suggestions
-        $repo = $em->getRepository('AppBundle:Suggestion');
-        $query = $repo->createQueryBuilder('s')
-            ->where('s.approved = :bool')
-            ->setParameter('bool', true)
-            ->orderBy('s.created', 'DESC')
-            ->setMaxResults(6)
-            ->getQuery();
-        $suggestions = $query->getResult();
+        //fetch categories
+        $categories = $em->getRepository('AppBundle:Category')
+            ->findAll();
 
         //fetch count
-        $count = $repo->createQueryBuilder('s')
+        $count = $em->getRepository('AppBundle:Suggestion')->createQueryBuilder('s')
             ->select('COUNT(s)')
             ->where('s.approved = :bool')
             ->setParameter('bool', true)
@@ -67,8 +61,8 @@ class HomepageController extends BaseController
             'form' => $form->createView(),
             'showForm' => $showForm,
             'mailingForm' => $this->mailingForm->createView(),
+            'categories' => $categories,
             'showMailingForm' => $this->showMailingForm,
-            'suggestions' => $suggestions,
             'count' => $count
         ));
     }

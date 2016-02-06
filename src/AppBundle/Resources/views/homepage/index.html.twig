@@ -79,6 +79,21 @@
     <!-- ======== @Region: #content ======== -->
     <div id="content">
       <div class="container">
+      <!--Customer testimonial-->
+      <div class="block testimonials margin-top-large"> <a name="suggestion-categories"></a>
+        <h2 class="title-divider">
+          <span>Kategórie <span class="de-em">podnetov</span></span>
+          <small>Tu vidíte 4 najnovšie a 4 najpopulárnejšie podnety pre jednotlivé kategórie</small>
+      </h2>
+      <div class="row">
+          <div class="panel-group panel-group-list-style" id="list-accordion">
+              {% for category in categories %}
+                  <p>{{category.title}}</p>
+              {% endfor %}
+
+          </div>
+      </div>
+      </div>
         <!-- Services -->
         <div class="block features">
           <h2 class="title-divider"><a name="add-suggestion"></a>
@@ -105,26 +120,6 @@
                 </div>
             {% endif %}
         </div>
-    </div>
-    <!--Customer testimonial-->
-    <div class="block testimonials margin-top-large"> <a name="newest-suggestions"></a>
-      <h2 class="title-divider">
-        <span>Najnovšie <span class="de-em">podnety</span></span>
-        <small>Už čoskoro tu uvidíte prehľadne kategorizované <strong>všetky</strong> podnety. Tu je zatiaľ zopár najnovších:</small>
-    </h2>
-    <div class="row">
-        <div class="panel-group panel-group-list-style" id="list-accordion">
-            {% for sug in suggestions %}
-                <div class="panel panel-default">
-                  <div class="panel-heading"> <a data-toggle="collapse" data-parent="#list-accordion" href="#collapse{{loop.index}}" class="panel-title collapsed" aria-expanded="false">Pridané v kategórii <strong>{{sug.category}}</strong> dňa <em>{{sug.created |date("d. m. Y")}}</em></a> </div>
-                  <div id="collapse{{loop.index}}" class="collapse" aria-expanded="false" style="height: 0px;">
-                    <div class="panel-body">{{sug.text|nl2br}}</div>
-                  </div>
-                </div>
-            {% endfor %}
-
-        </div>
-    </div>
     </div>
     </div>
     </div>
