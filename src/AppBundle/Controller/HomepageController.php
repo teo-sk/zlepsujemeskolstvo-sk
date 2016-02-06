@@ -10,7 +10,7 @@ use AppBundle\Form\MailingType;
 use AppBundle\Entity\Suggestion;
 use AppBundle\Entity\Mailing;
 
-class HomepageController extends Controller
+class HomepageController extends BaseController
 {
     /**
      * @Route("/", name="homepage")
@@ -38,24 +38,10 @@ class HomepageController extends Controller
         $flash = $this->get('session')->getFlashBag()->get('form');
         $showForm = !(!empty($flash) && $flash[0] === 'thanks');
 
-        //handle newsletter submit
-        $mailing = new Mailing();
-        $mailingForm = $this->createForm(MailingType::class, $mailing);
-        $mailingForm->handleRequest($request);
-        if ($mailingForm->isSubmitted() && $mailingForm->isValid()) {
-            $mailing->setIp($request->getClientIp());
-
-            $em->persist($mailing);
-            $em->flush();
-
-            $this->addFlash(
-                        'mailingForm',
-                        'thanks'
-                    );
+        $this->handleMailingForm($request);
+        if ($this->redirect) {
             return $this->redirectToRoute('homepage');
         }
-        $flash = $this->get('session')->getFlashBag()->get('mailingForm');
-        $showMailingForm = !(!empty($flash) && $flash[0] === 'thanks');
 
         //load shortlist of newest suggestions
         $repo = $em->getRepository('AppBundle:Suggestion');
@@ -80,8 +66,8 @@ class HomepageController extends Controller
         return $this->render('AppBundle:homepage:index.html.twig', array(
             'form' => $form->createView(),
             'showForm' => $showForm,
-            'mailingForm' => $mailingForm->createView(),
-            'showMailingForm' => $showMailingForm,
+            'mailingForm' => $this->mailingForm->createView(),
+            'showMailingForm' => $this->showMailingForm,
             'suggestions' => $suggestions,
             'count' => $count
         ));
