@@ -18,25 +18,27 @@
   <meta property="og:type" content="website">
   
   <!-- Bootstrap CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
   
   <!-- Font Awesome -->
-  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
   
   <!-- Plugins required on all pages NOTE: Additional non-required plugins are loaded ondemand as of AppStrap 2.5 -->
   <!-- Plugin: animate.css (animated effects) - http://daneden.github.io/animate.css/ -->
-  <link href="plugins/animate/animate.css" rel="stylesheet">
+  <link href="/plugins/animate/animate.css" rel="stylesheet">
   <!-- @LINEBREAK -- <!-- Plugin: flag icons - http://lipis.github.io/flag-icon-css/ -->
-  <link href="plugins/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+  <link href="/plugins/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
   
   <!-- Theme style -->
-  <link href="css/theme-style.min.css" rel="stylesheet">
+  <link href="/css/theme-style.min.css" rel="stylesheet">
   
   <!--Your custom colour override-->
   <!-- <link href="#" id="colour-scheme" rel="stylesheet"> -->
   
   <!-- Your custom override -->
-  <link href="css/custom-style.css" rel="stylesheet">
+  <link href="/css/custom-style.css" rel="stylesheet">
   
   <!-- HTML5 shiv & respond.js for IE6-8 support of HTML5 elements & media queries -->
   <!--[if lt IE 9]>
@@ -45,13 +47,13 @@
   <![endif]-->
   
   <!-- Le fav and touch icons - @todo: fill with your icons or remove -->
-  <link rel="shortcut icon" href="img/icons/favicon.ico">
+  <link rel="shortcut icon" href="/img/icons/favicon.ico">
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Rambla' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Calligraffitti' rel='stylesheet' type='text/css'>
   
   <!--Plugin: Retina.js (high def image replacement) - @see: http://retinajs.com/-->
-  <script src="plugins/retina/dist/retina.min.js"></script>
+  <script src="/plugins/retina/dist/retina.min.js"></script>
 </head>
 <!-- ======== @Region: body ======== -->
 <body class="page page-index-static">
@@ -120,13 +122,13 @@
     <!--main navigation-->
     <ul class="nav navbar-nav">
       <li class="home-link">
-        <a href="#top"><i class="fa fa-home"></i><span class="hidden">Home</span></a>
+        <a href="{{path('homepage')}}#top"><i class="fa fa-home"></i><span class="hidden">Home</span></a>
       </li>
       <li class="dropdown">
-        <a href="#add-suggestion">Pridať podnet</a>
+        <a href="{{path('homepage')}}#suggestion-categories">Kategórie podnetov</a>
       </li>
       <li class="dropdown">
-        <a href="#newest-suggestions">Najnovšie podnety</a>
+        <a href="{{path('homepage')}}#add-suggestion">Pridať podnet</a>
       </li>
       {#<li class="dropdown">
         <a href="#"><i class="fa fa-external-link"></i>&nbsp;Blog</a>
@@ -197,7 +199,21 @@
         Newsletter
     </h3>
     <p>Zadajte svoj e-mail, aby sme vám mohli dať vedieť, keď spustíme ďaľsie funkcie tejto stránky</p>
-    {% block mailForm %}{% endblock %}
+    {% if showMailingForm %}
+        {{ form_start(mailingForm) }}
+            {{ form_errors(mailingForm) }}
+            <div class="input-group input-group-sm">
+              <label class="sr-only" for="email-field">Email</label>
+              {{ form_widget(mailingForm.email) }}
+                <span class="input-group-btn">
+                    {{ form_widget(mailingForm.fingerprint) }}
+                    {{ form_widget(mailingForm.submit) }}
+                </span>
+            </div>
+        {{ form_end(mailingForm) }}
+    {% else %}
+        <small><strong>Ďakujeme, váš e-mail bol pridaný.</strong></small>
+    {% endif %}
 </div>
 </div>
 </div>
@@ -224,18 +240,20 @@
 
 
 <!--Scripts -->
-<script src="js/jquery.min.js"></script>
+<script src="/js/jquery.min.js"></script>
 
 <!-- Bootstrap JS -->
-<script src="js/bootstrap.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
 
 <!-- JS plugins required on all pages NOTE: Additional non-required plugins are loaded ondemand as of AppStrap 2.5 -->
 
 <!--Custom scripts mainly used to trigger libraries/plugins -->
 <script src="http://cdn.jsdelivr.net/fingerprintjs2/1.1.0/fingerprint2.min.js"></script>
-<script src="js/script.min.js"></script>
-<script src="js/main.js"></script>
+<script src="/js/script.min.js"></script>
+<script src="/js/main.js"></script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

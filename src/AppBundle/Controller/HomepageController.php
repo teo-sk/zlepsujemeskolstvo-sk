@@ -10,7 +10,7 @@ use AppBundle\Form\MailingType;
 use AppBundle\Entity\Suggestion;
 use AppBundle\Entity\Mailing;
 
-class HomepageController extends Controller
+class HomepageController extends BaseController
 {
     /**
      * @Route("/", name="homepage")
@@ -38,37 +38,17 @@ class HomepageController extends Controller
         $flash = $this->get('session')->getFlashBag()->get('form');
         $showForm = !(!empty($flash) && $flash[0] === 'thanks');
 
-        //handle newsletter submit
-        $mailing = new Mailing();
-        $mailingForm = $this->createForm(MailingType::class, $mailing);
-        $mailingForm->handleRequest($request);
-        if ($mailingForm->isSubmitted() && $mailingForm->isValid()) {
-            $mailing->setIp($request->getClientIp());
-
-            $em->persist($mailing);
-            $em->flush();
-
-            $this->addFlash(
-                        'mailingForm',
-                        'thanks'
-                    );
+        $this->handleMailingForm($request);
+        if ($this->redirect) {
             return $this->redirectToRoute('homepage');
         }
-        $flash = $this->get('session')->getFlashBag()->get('mailingForm');
-        $showMailingForm = !(!empty($flash) && $flash[0] === 'thanks');
 
-        //load shortlist of newest suggestions
-        $repo = $em->getRepository('AppBundle:Suggestion');
-        $query = $repo->createQueryBuilder('s')
-            ->where('s.approved = :bool')
-            ->setParameter('bool', true)
-            ->orderBy('s.created', 'DESC')
-            ->setMaxResults(6)
-            ->getQuery();
-        $suggestions = $query->getResult();
+        //fetch categories
+        $categories = $em->getRepository('AppBundle:Category')
+            ->findAll();
 
         //fetch count
-        $count = $repo->createQueryBuilder('s')
+        $count = $em->getRepository('AppBundle:Suggestion')->createQueryBuilder('s')
             ->select('COUNT(s)')
             ->where('s.approved = :bool')
             ->setParameter('bool', true)
@@ -80,9 +60,9 @@ class HomepageController extends Controller
         return $this->render('AppBundle:homepage:index.html.twig', array(
             'form' => $form->createView(),
             'showForm' => $showForm,
-            'mailingForm' => $mailingForm->createView(),
-            'showMailingForm' => $showMailingForm,
-            'suggestions' => $suggestions,
+            'mailingForm' => $this->mailingForm->createView(),
+            'categories' => $categories,
+            'showMailingForm' => $this->showMailingForm,
             'count' => $count
         ));
     }

@@ -79,6 +79,69 @@
     <!-- ======== @Region: #content ======== -->
     <div id="content">
       <div class="container">
+      <!--Customer testimonial-->
+      <div class="block testimonials margin-top-large"> <a name="suggestion-categories"></a>
+        <h2 class="title-divider">
+          <span>Kategórie <span class="de-em">podnetov</span></span>
+          <small>Tu vidíte 4 najnovšie a 4 najpopulárnejšie podnety pre jednotlivé kategórie</small>
+      </h2>
+      <div class="row">
+          <div class="panel-group" id="list-accordion">
+              {% for category in categories %}
+                  <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#collapseCategory{{loop.index}}" aria-expanded="false" class="collapsed"> {{category.title}} </a>
+                        </h4>
+                      </div>
+                      <div id="collapseCategory{{loop.index}}" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+                        <div class="panel-body">
+                            {% if category.newestSuggestions is not empty %}
+                            <h4>Najnovšie podnety</h4>
+                            <div class="panel-group panel-group-list-style" id="list-accordion-inner">
+                            {% for sug in category.newestSuggestions %}
+                                <div class="panel panel-default">
+                                  <div class="panel-heading"> <a data-toggle="collapse" data-parent="#list-accordion-inner" href="#collapse{{category.id}}{{loop.index}}" class="panel-title collapsed" aria-expanded="false">Pridané v kategórii <strong>{{sug.category}}</strong> dňa <em>{{sug.created |date("d. m. Y")}}</em>  <span class="pull-right"><span class="glyphicon glyphicon-thumbs-up"></span> <span class="votes-for-{{sug.id}}">{{sug.votes|length}}</span></span></a> </div>
+                                  <div id="collapse{{category.id}}{{loop.index}}" class="collapse" aria-expanded="false" style="height: 0px;">
+                                    <div class="panel-body">
+                                        <p class="pull-right">
+                                            <a href="#" class="btn btn-primary" data-vote="{{sug.id}}">Hlasuj</a> 
+                                        </p>
+                                        <p>{{sug.text|nl2br}}</p>
+                                    </div>
+                                  </div>
+                                </div>
+                            {% else %}
+                            {% endfor %}
+                            </div>
+                            <h4>Najpopulárnejšie podnety</h4>
+                            <div class="panel-group panel-group-list-style" id="list-accordion-inner2">
+                            {% for sug in category.popularSuggestions |slice(0, 4) %}
+                                <div class="panel panel-default">
+                                  <div class="panel-heading"> <a data-toggle="collapse" data-parent="#list-accordion-inner2" href="#collapse{{category.id}}p{{loop.index}}" class="panel-title collapsed" aria-expanded="false">Pridané v kategórii <strong>{{sug.category}}</strong> dňa <em>{{sug.created |date("d. m. Y")}}</em>  <span class="pull-right"><span class="glyphicon glyphicon-thumbs-up"></span> <span class="votes-for-{{sug.id}}">{{sug.votes|length}}</span></span></a> </div>
+                                  <div id="collapse{{category.id}}p{{loop.index}}" class="collapse" aria-expanded="false" style="height: 0px;">
+                                    <div class="panel-body">
+                                        <p class="pull-right">
+                                            <a href="#" class="btn btn-primary" data-vote="{{sug.id}}">Hlasuj</a> 
+                                        </p>
+                                        <p>{{sug.text|nl2br}}</p>
+                                    </div>
+                                  </div>
+                                </div>
+                            {% endfor %}
+                            </div>
+                            <a href="{{path('category', {id: category.id})}}" class="btn btn-default pull-right"><i class="fa fa-arrow-circle-right"></i> Prezerať všetky</a>
+                            {% else %}
+                            <p>Žiadne podnety v tejto kategórii ešte neboli pridané.</p>
+                            {% endif %}
+                        </div>
+                      </div>
+                    </div>
+              {% endfor %}
+
+          </div>
+      </div>
+      </div>
         <!-- Services -->
         <div class="block features">
           <h2 class="title-divider"><a name="add-suggestion"></a>
@@ -106,26 +169,6 @@
             {% endif %}
         </div>
     </div>
-    <!--Customer testimonial-->
-    <div class="block testimonials margin-top-large"> <a name="newest-suggestions"></a>
-      <h2 class="title-divider">
-        <span>Najnovšie <span class="de-em">podnety</span></span>
-        <small>Už čoskoro tu uvidíte prehľadne kategorizované <strong>všetky</strong> podnety. Tu je zatiaľ zopár najnovších:</small>
-    </h2>
-    <div class="row">
-        <div class="panel-group panel-group-list-style" id="list-accordion">
-            {% for sug in suggestions %}
-                <div class="panel panel-default">
-                  <div class="panel-heading"> <a data-toggle="collapse" data-parent="#list-accordion" href="#collapse{{loop.index}}" class="panel-title collapsed" aria-expanded="false">Pridané v kategórii <strong>{{sug.category}}</strong> dňa <em>{{sug.created |date("d. m. Y")}}</em></a> </div>
-                  <div id="collapse{{loop.index}}" class="collapse" aria-expanded="false" style="height: 0px;">
-                    <div class="panel-body">{{sug.text|nl2br}}</div>
-                  </div>
-                </div>
-            {% endfor %}
-
-        </div>
-    </div>
-    </div>
     </div>
     </div>
 
@@ -139,22 +182,4 @@
     </div>
     </div>
     </div>
-    {% endblock %}
-
-    {% block mailForm %}
-        {% if showMailingForm %}
-            {{ form_start(mailingForm) }}
-                {{ form_errors(mailingForm) }}
-                <div class="input-group input-group-sm">
-                  <label class="sr-only" for="email-field">Email</label>
-                  {{ form_widget(mailingForm.email) }}
-                    <span class="input-group-btn">
-                        {{ form_widget(mailingForm.fingerprint) }}
-                        {{ form_widget(mailingForm.submit) }}
-                    </span>
-                </div>
-            {{ form_end(mailingForm) }}
-        {% else %}
-            <small><strong>Ďakujeme, váš e-mail bol pridaný.</strong></small>
-        {% endif %}
     {% endblock %}
