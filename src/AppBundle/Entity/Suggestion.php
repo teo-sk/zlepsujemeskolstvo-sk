@@ -369,4 +369,9 @@ class Suggestion
     {
         return $this->votes;
     }
+
+    public function getVoteCount()
+    {
+        return count($this->votes);
+    }
 }

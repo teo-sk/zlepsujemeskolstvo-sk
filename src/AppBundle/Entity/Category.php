@@ -135,6 +135,15 @@ class Category
 
     public function getPopularSuggestions()
     {
-        //@todo: finish after implementing votes
+        $criteria = Criteria::create();
+        $criteria->where(Criteria::expr()->eq('approved', true));
+
+        $suggestions = $this->suggestions->matching($criteria)->toArray();
+
+        usort($suggestions, function($a, $b) {
+            return count($b->getVotes()) - count($a->getVotes());
+        });
+
+        return $suggestions;
     }
 }

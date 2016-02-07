@@ -15,6 +15,8 @@ class CategoryController extends BaseController
     {
         $em = $this->getDoctrine()->getManager();
 
+        $order = (in_array($request->query->get('order'), ['newest', 'popular'])) ? $request->query->get('order') : 'popular';
+
         $this->handleMailingForm($request);
         if ($this->redirect) {
             return $this->redirectToRoute('category', array('id' => $id));
@@ -28,11 +30,19 @@ class CategoryController extends BaseController
             throw $this->createNotFoundException('Kategória neexistuje.');
         }
 
+        if ('popular' == $order) {
+            $suggestions = $category->getPopularSuggestions();
+        } else {
+            $suggestions = $category->getAllSuggestions();
+        }
+
         //show view
         return $this->render('AppBundle:category:category.html.twig', array(
             'mailingForm' => $this->mailingForm->createView(),
             'showMailingForm' => $this->showMailingForm,
             'category' => $category,
+            'suggestions' => $suggestions,
+            'order' => $order
         ));
     }
 }
