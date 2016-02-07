@@ -3,7 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM,
-    Doctrine\Common\Collections\ArrayCollection;
+    Doctrine\Common\Collections\ArrayCollection,
+    Doctrine\Common\Collections\Criteria;
 
 /**
  * Category
@@ -111,5 +112,19 @@ class Category
     public function getSuggestions()
     {
         return $this->suggestions;
+    }
+
+    public function getNewestSuggestions()
+    {
+        $criteria = Criteria::create();
+        $criteria->orderBy(array("created" => Criteria::DESC))
+                 ->setMaxResults(4);
+
+        return $this->suggestions->matching($criteria);
+    }
+
+    public function getPopularSuggestions()
+    {
+        //@todo: finish after implementing votes
     }
 }
