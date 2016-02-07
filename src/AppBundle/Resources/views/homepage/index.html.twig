@@ -91,7 +91,13 @@
                   <div class="panel panel-default">
                       <div class="panel-heading">
                         <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#collapseCategory{{loop.index}}" aria-expanded="false" class="collapsed"> {{category.title}} <small class="text-muted">{{category.allSuggestions|length}} podnetov celkovo</small> </a>
+                          <a data-toggle="collapse" data-parent="#accordion" href="#collapseCategory{{loop.index}}" aria-expanded="false" class="collapsed"> {{category.title}} <small class="text-muted">
+                                      {% transchoice category.allSuggestions|length %}
+
+                                      {0} Ešte žiadne podnety|{1} Jeden podnet |]1,4] %count% podnety celkovo |]4,Inf] %count% podnetov celkovo
+
+                                      {% endtranschoice %}
+                                    </small> </a>
                         </h4>
                       </div>
                       <div id="collapseCategory{{loop.index}}" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
