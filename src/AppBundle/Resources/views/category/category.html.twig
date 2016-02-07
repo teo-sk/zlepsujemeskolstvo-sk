@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+{% form_theme mailingForm 'bootstrap_3_layout.html.twig' %}
+
+{% block title %}Zlepšujeme školstvo | Kategória {{category.title}}{% endblock %}
+
+{% block body %}
+
+
+    <!-- ======== @Region: #content ======== -->
+    <div id="content">
+      <div class="container">
+            <h2 class="title-divider">
+              <span>Kategória <span class="de-em">{{category.title}}</span></span>
+              <small>Všetky podnety</small>
+            </h2>
+            <div class="row">
+                <div class="col-md-12 blog-roll blog-list">
+                    {% for sug in category.allSuggestions %}
+                    <div class="row blog-post">
+                      <div class="col-md-1 date-md">
+                        <!-- Date desktop -->
+                        <div class="date-wrapper"> <span class="date-m">{{sug.created |date('M')}}</span> <span class="date-d">{{sug.created |date('d')}}</span> </div>
+                        <!-- Meta details desktop -->
+                        <p class="text-muted"> <i class="fa fa-user"></i> {{sug.name}} </p>
+                      </div>
+                      <div class="col-md-11">
+                        <!-- Meta details mobile -->
+                        <ul class="list-inline meta text-muted">
+                          <li><i class="fa fa-calendar"></i> {{sug.created |date("d. m. Y")}}</li>
+                          <li><i class="fa fa-user"></i> {{sug.name}}</li>
+                        </ul>
+                        <div class="row">
+                          <div class="col-md-4 col-md-push-8">
+                            <div class="blog-media">
+                              TBD voting
+                            </div>
+                          </div>
+                          <div class="col-md-8 col-md-pull-4">
+                            <p>
+                                {{sug.text|nl2br}}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>    
+      </div>
+    </div>
+{% endblock %}

@@ -6,7 +6,7 @@
  *******************************************************/
 /*global jRespond */
 var jPM = {};
-var PLUGINS_PATH = './plugins/';
+var PLUGINS_PATH = '/plugins/';
 var SLIDER_REV_VERSION = '4.6';
 jQuery(document).ready(function() {
   "use strict";

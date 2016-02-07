@@ -114,10 +114,20 @@ class Category
         return $this->suggestions;
     }
 
+    public function getAllSuggestions()
+    {
+        $criteria = Criteria::create();
+        $criteria->where(Criteria::expr()->eq('approved', true))
+                 ->orderBy(array("created" => Criteria::DESC));
+
+        return $this->suggestions->matching($criteria);
+    }
+
     public function getNewestSuggestions()
     {
         $criteria = Criteria::create();
-        $criteria->orderBy(array("created" => Criteria::DESC))
+        $criteria->where(Criteria::expr()->eq('approved', true))
+                 ->orderBy(array("created" => Criteria::DESC))
                  ->setMaxResults(4);
 
         return $this->suggestions->matching($criteria);
