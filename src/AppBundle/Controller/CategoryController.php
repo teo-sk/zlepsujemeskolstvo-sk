@@ -24,6 +24,10 @@ class CategoryController extends BaseController
         $category = $em->getRepository('AppBundle:Category')
             ->findOneById($id);
 
+        if (!$category) {
+            throw $this->createNotFoundException('Kategória neexistuje.');
+        }
+
         //show view
         return $this->render('AppBundle:category:category.html.twig', array(
             'mailingForm' => $this->mailingForm->createView(),

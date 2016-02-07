@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -97,9 +98,15 @@ class Suggestion
      */
     private $fingerprint;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Vote", mappedBy="suggestion")
+     */
+    private $votes;
+
     public function __construct()
     {
         $this->created = new \DateTime();
+        $this->votes = new ArrayCollection();
     }
 
 
@@ -327,5 +334,39 @@ class Suggestion
     public function getSurname()
     {
         return $this->surname;
+    }
+
+    /**
+     * Add vote
+     *
+     * @param \AppBundle\Entity\Vote $vote
+     *
+     * @return Suggestion
+     */
+    public function addVote(\AppBundle\Entity\Vote $vote)
+    {
+        $this->votes[] = $vote;
+
+        return $this;
+    }
+
+    /**
+     * Remove vote
+     *
+     * @param \AppBundle\Entity\Vote $vote
+     */
+    public function removeVote(\AppBundle\Entity\Vote $vote)
+    {
+        $this->votes->removeElement($vote);
+    }
+
+    /**
+     * Get votes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getVotes()
+    {
+        return $this->votes;
     }
 }

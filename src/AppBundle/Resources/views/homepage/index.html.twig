@@ -100,9 +100,14 @@
                             <div class="panel-group panel-group-list-style" id="list-accordion-inner">
                             {% for sug in category.newestSuggestions %}
                                 <div class="panel panel-default">
-                                  <div class="panel-heading"> <a data-toggle="collapse" data-parent="#list-accordion-inner" href="#collapse{{category.id}}{{loop.index}}" class="panel-title collapsed" aria-expanded="false">Pridané v kategórii <strong>{{sug.category}}</strong> dňa <em>{{sug.created |date("d. m. Y")}}</em></a> </div>
+                                  <div class="panel-heading"> <a data-toggle="collapse" data-parent="#list-accordion-inner" href="#collapse{{category.id}}{{loop.index}}" class="panel-title collapsed" aria-expanded="false">Pridané v kategórii <strong>{{sug.category}}</strong> dňa <em>{{sug.created |date("d. m. Y")}}</em>  <span class="pull-right"><span class="glyphicon glyphicon-thumbs-up"></span> <span class="votes-for-{{sug.id}}">{{sug.votes|length}}</span></span></a> </div>
                                   <div id="collapse{{category.id}}{{loop.index}}" class="collapse" aria-expanded="false" style="height: 0px;">
-                                    <div class="panel-body">{{sug.text|nl2br}}</div>
+                                    <div class="panel-body">
+                                        <p class="pull-right">
+                                            <a href="#" class="btn btn-primary" data-vote="{{sug.id}}">Hlasuj</a> 
+                                        </p>
+                                        <p>{{sug.text|nl2br}}</p>
+                                    </div>
                                   </div>
                                 </div>
                             {% endfor %}
