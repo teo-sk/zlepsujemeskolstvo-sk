@@ -59,7 +59,7 @@ class HomepageController extends BaseController
         //show view
         return $this->render('AppBundle:homepage:index.html.twig', array(
             'form' => $form->createView(),
-            'showForm' => $showForm,
+            'showThanks' => !$showForm,
             'mailingForm' => $this->mailingForm->createView(),
             'categories' => $categories,
             'showMailingForm' => $this->showMailingForm,

@@ -155,7 +155,6 @@
             <small>Pridajte váš podnet na zlepšenie školstva.</small>
         </h2>
         <div class="row">
-            {% if showForm %}
             {{ form_start(form, { 'attr' : { 'class': 'form-wrapper' } }) }}
                 {{ form_errors(form) }}
 
@@ -165,14 +164,6 @@
                 {{ form_row(form.email) }}
                 {{ form_row(form.text, { 'attr': { 'rows': '20' }}) }}
             {{ form_end(form) }}
-            {% else %}
-                <div class="alert alert-success">
-                  <h4>
-                    Ďakujeme!
-                  </h4>
-                  Váš podnet bol odoslaný na schválenie a objaví sa tu čoskoro.
-                </div>
-            {% endif %}
         </div>
     </div>
     </div>
@@ -189,3 +180,13 @@
     </div>
     </div>
     {% endblock %}
+
+{% block scripts %}
+{% if showThanks %}
+<script type="text/javascript">
+    $(function() {
+        toastr.success('Ďakujeme! Váš podnet bol odoslaný na schválenie a objaví sa tu čoskoro.');
+    });
+</script>
+{% endif %}
+{% endblock %}
