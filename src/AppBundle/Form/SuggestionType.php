@@ -22,9 +22,12 @@ class SuggestionType extends AbstractType
                     'label' => "Meno"
                 ))
             ->add('surname', null, array(
-                    'label' => "Priezvisko"
+                    'label' => "Priezvisko",
+                    'required' => false
                 ))
-            ->add('email')
+            ->add('email', null, array(
+                    'required' => false
+                ))
             ->add('text', null, array(
                     'label' => "Váš podnet (Maximálne 1800 znakov)"
                 ))
@@ -37,7 +40,7 @@ class SuggestionType extends AbstractType
                 ))
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
