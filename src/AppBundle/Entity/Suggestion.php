@@ -36,7 +36,6 @@ class Suggestion
      * @var string
      *
      * @ORM\Column(name="surname", type="string", length=255, nullable=true)
-     * @Assert\NotBlank()
      */
     private $surname;
 
