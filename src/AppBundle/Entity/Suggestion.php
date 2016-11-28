@@ -63,7 +63,7 @@ class Suggestion
      * @ORM\Column(name="text", type="text")
      * @Assert\NotBlank()
      * @Assert\Length(
-     *      max = 1800,
+     *      max = 10000,
      *      maxMessage = "Váš podnet môže mať maximálne {{limit}} znakov."
      * )
      */

@@ -29,7 +29,7 @@ class SuggestionType extends AbstractType
                     'required' => false
                 ))
             ->add('text', null, array(
-                    'label' => "Váš podnet (Maximálne 1800 znakov)"
+                    'label' => "Váš podnet (Maximálne 10000 znakov)"
                 ))
             ->add('fingerprint', 'hidden')
             ->add('submit', 'submit', array(
