@@ -27,6 +27,7 @@ class CategoryAdmin extends Admin
     {
         $listMapper
             ->add('title')
+            ->add('parent')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -44,6 +45,7 @@ class CategoryAdmin extends Admin
     {
         $formMapper
             ->add('title')
+            ->add('parent')
         ;
     }
 

@@ -18,7 +18,7 @@ class HomepageController extends BaseController
     public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        
+
         //handle suggestion
         $suggestion = new Suggestion();
         $form = $this->createForm(SuggestionType::class, $suggestion);
@@ -45,7 +45,10 @@ class HomepageController extends BaseController
 
         //fetch categories
         $categories = $em->getRepository('AppBundle:Category')
-            ->findAll();
+            ->createQueryBuilder('c')
+            ->where('c.parent IS NOT NULL')
+            ->getQuery()
+            ->getResult();
 
         //fetch count
         $count = $em->getRepository('AppBundle:Suggestion')->createQueryBuilder('s')

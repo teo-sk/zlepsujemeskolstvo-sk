@@ -15,8 +15,12 @@ class SuggestionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('category', null, array(
-                    'label' => 'Kategória'
+            ->add('category',  'entity', array(
+                    'label' => 'Kategória',
+                    'class' => 'AppBundle:Category',
+                    'group_by' => 'parent',
+                    'query_builder' => function (\AppBundle\Repository\CategoryRepository $repository)
+                      {return $repository->createQueryBuilder('c')->where('c.parent IS NOT NULL');}
                 ))
             ->add('name', null, array(
                     'label' => "Meno"
