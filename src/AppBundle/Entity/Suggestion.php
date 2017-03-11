@@ -43,6 +43,13 @@ class Suggestion
     /**
      * @var string
      *
+     * @ORM\Column(name="organization", type="string", length=255, nullable=true)
+     */
+    private $organization;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="email", type="string", length=255)
      * @Assert\Email(
      *     message = "'{{ value }}' nie je validný email.",
@@ -334,6 +341,30 @@ class Suggestion
     public function getSurname()
     {
         return $this->surname;
+    }
+
+    /**
+     * Set organization
+     *
+     * @param string $organization
+     *
+     * @return Suggestion
+     */
+    public function setOrganization($organization)
+    {
+        $this->organization = $organization;
+
+        return $this;
+    }
+
+    /**
+     * Get organization
+     *
+     * @return string
+     */
+    public function getOrganization()
+    {
+        return $this->organization;
     }
 
     /**
