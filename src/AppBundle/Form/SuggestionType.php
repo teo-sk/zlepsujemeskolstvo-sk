@@ -26,7 +26,7 @@ class SuggestionType extends AbstractType
                 ))
             ->add('email')
             ->add('text', null, array(
-                    'label' => "Váš podnet (Maximálne 1800 znakov)"
+                    'label' => "Váš podnet (Maximálne 3600 znakov)"
                 ))
             ->add('fingerprint', 'hidden')
             ->add('submit', 'submit', array(
@@ -37,7 +37,7 @@ class SuggestionType extends AbstractType
                 ))
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
