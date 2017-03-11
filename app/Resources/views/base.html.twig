@@ -6,60 +6,52 @@
   <title>{% block title %}{% endblock %}</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- @todo: fill with your company info or remove -->
-  <meta name="description" content="Iniciatíva zlepšujeme školstvo vznikla v posledných januárových dňoch 2016, keď sa zreteľne preukázalo, že aj tí najelitnejší politici opäť zlyhávajú v pochopení potrieb občanov a pochopení pohybu v spoločnosti. Zo štrajku učiteľov sa postupom času stalo vyjadrovanie občianskeho názoru a ten, ako býva v poslednej dobe zvykom, nebol ani len v náznaku započutý.">
-  <meta name="author" content="digital_nomads">
 
-  <meta property="og:title" content="Zlepšujemeškolstvo.sk">
-  <meta property="og:site_name" content="Zlepšujemeškolstvo.sk">
-  <meta property="og:url" content="http://zlepsujemeskolstvo.sk">
-  <meta property="og:description" content="Iniciatíva zlepšujeme školstvo vznikla v posledných januárových dňoch 2016, keď sa zreteľne preukázalo, že aj tí najelitnejší politici opäť zlyhávajú v pochopení potrieb občanov a pochopení pohybu v spoločnosti. Zo štrajku učiteľov sa postupom času stalo vyjadrovanie občianskeho názoru a ten, ako býva v poslednej dobe zvykom, nebol ani len v náznaku započutý.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="http://static.zlepsujemeskolstvo.sk/zs.jpg" />
-  
+  <!-- @todo: fill with your company info or remove -->
+  <meta name="description" content="Narodny program rozvoja vychovy a vzdelavania">
+
   <!-- Bootstrap CSS -->
   <link href="/css/bootstrap.min.css" rel="stylesheet">
-  
+
   <!-- Font Awesome -->
   <link href="/css/font-awesome.min.css" rel="stylesheet">
 
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
-  
+
   <!-- Plugins required on all pages NOTE: Additional non-required plugins are loaded ondemand as of AppStrap 2.5 -->
   <!-- Plugin: animate.css (animated effects) - http://daneden.github.io/animate.css/ -->
   <link href="/plugins/animate/animate.css" rel="stylesheet">
   <!-- @LINEBREAK -- <!-- Plugin: flag icons - http://lipis.github.io/flag-icon-css/ -->
   <link href="/plugins/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
-  
+
   <!-- Theme style -->
   <link href="/css/theme-style.min.css" rel="stylesheet">
-  
+
   <!--Your custom colour override-->
-  <!-- <link href="#" id="colour-scheme" rel="stylesheet"> -->
-  
+  <link href="/css/colour-minedu.css" id="colour-scheme" rel="stylesheet">
+
   <!-- Your custom override -->
   <link href="/css/custom-style.css" rel="stylesheet">
-  
+
   <!-- HTML5 shiv & respond.js for IE6-8 support of HTML5 elements & media queries -->
   <!--[if lt IE 9]>
   <script src="plugins/html5shiv/dist/html5shiv.js"></script>
   <script src="plugins/respond/respond.min.js"></script>
   <![endif]-->
-  
+
   <!-- Le fav and touch icons - @todo: fill with your icons or remove -->
   <link rel="shortcut icon" href="/img/icons/favicon.ico">
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Rambla' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Calligraffitti' rel='stylesheet' type='text/css'>
-  
+
   <!--Plugin: Retina.js (high def image replacement) - @see: http://retinajs.com/-->
   <script src="/plugins/retina/dist/retina.min.js"></script>
 </head>
 <!-- ======== @Region: body ======== -->
 <body class="page page-index-static">
-    <a href="#content" class="sr-only">Skip to content</a> 
-    
+    <a href="#content" class="sr-only">Skip to content</a>
+
     <!-- ======== @Region: #navigation ======== -->
     <div id="navigation" class="wrapper">
       <div class="navbar-static-top">
@@ -102,11 +94,9 @@
         <div class="pull-left">
           <!--branding/logo-->
           <a class="navbar-brand" href="/" title="Home">
-            <h1>
-              <span>Zlepšujeme</span>školstvo<span>.sk</span>
-          </h1>
-      </a>
-      <div class="slogan">občianska iniciatíva</div>
+            <h1><img src="/img/minedu.png" style="width: 200px;"/></h1>
+          </a>
+      <div class="slogan">Národný program rozvoja výchovy a vzdelávania</div>
   </div>
 
   <!--Search trigger -->
@@ -152,70 +142,18 @@
     <div class="row">
       <div class="col-md-3 col">
         <div class="block contact-block">
-          <!--@todo: replace with company contact details-->
-          <h3>
-            Kontakt
-        </h3>
-        <address>
-            <ul class="fa-ul">
-            <li>
-                <abbr title="Email"><i class="fa fa-li fa-envelope"></i></abbr>
-                <a href="mailto:info@zlepsujemeskolstvo.sk">info@zlepsujemeskolstvo.sk</a>
-            </li>
-            <li>
-                <abbr title="Github"><i class="fa fa-li fa-github"></i></abbr>
-                <a href="https://github.com/teo-sk/zlepsujemeskolstvo-sk/">Pomôž zlepšiť túto stránku</a>
-            </li>
-        </ul>
-    </address>
-</div>
+        </div>
 </div>
 
 <div class="col-md-5 col">
     <div class="block">
-      <h3>
-        Partneri <small style="color:inherit">(v abecednom poradí)</small>
-    </h3>
-    <ul>
-        <li><a href="//www.sukromneskoly.sk/">Asociácia súkromných škôl a školských zariadení Slovenska</a></li>
-        <li><a href="//www.asociaciavp.wbl.sk/">Asociácia výchovných poradcov</a></li>
-        <li><a href="//www.casopisdobraskola.sk">Dobrá škola n.o.</a></li>
-        <li><a href="//www.socioterapia.sk">Inštitút psychoterapie a socioterapie</a></li>
-        <li><a href="//www.kampanadost.sk/">Kampaň A DOSŤ!</a></li>
-        <li><a href="//www.liberaterra.sk">Libera Terra</a></li>
-        <li><a href="//www.digitalnomads.sk">OZ Digital Nomads</a></li>
-        <li><a href="//www.ozsova.sk">OZ SOVA</a></li>
-        <li><a href="//www.didaktis.sk">Pedagogické vydavateľstvo Didaktis</a></li>
-        <li><a href="//www.montessori.sk">Súkromná základná škola Marie Montessori</a></li>
-        <li><a href="//www.skolaufilipa.sk">Súkromná základná škola u Filipa</a></li>
-        <li><a href="//www.pomoz.sk">Výzva pomôž svojmu učiteľovi</a></li>
-        <li><a href="//www.zspribno.edu.sk/">Základná škola, Pribinova 9, Nováky</a></li>
-    </ul>
+
 </div>
 </div>
 
 <div class="col-md-4 col">
     <div class="block newsletter">
-      <h3>
-        Newsletter
-    </h3>
-    <p>Zadajte svoj e-mail, aby sme vám mohli dať vedieť, keď spustíme ďaľsie funkcie tejto stránky</p>
-    {% if showMailingForm %}
-        {{ form_start(mailingForm) }}
-            {{ form_errors(mailingForm) }}
-            <div class="input-group input-group-sm">
-              <label class="sr-only" for="email-field">Email</label>
-              {{ form_widget(mailingForm.email) }}
-                <span class="input-group-btn">
-                    {{ form_widget(mailingForm.fingerprint) }}
-                    {{ form_widget(mailingForm.submit) }}
-                </span>
-            </div>
-        {{ form_end(mailingForm) }}
-    {% else %}
-        <small><strong>Ďakujeme, váš e-mail bol pridaný.</strong></small>
-    {% endif %}
-</div>
+    </div>
 </div>
 </div>
 
@@ -226,7 +164,7 @@
 <!--@todo: replace with company copyright details-->
 <div class="subfooter">
     <div class="col-md-6">
-      <p>Bootstrap téma od <a href="http://appstraptheme.com">AppStrap</a> | Copyright 2016 &copy; <a href="http://digitalnomads.sk">Digital Nomads</a></p>
+      <p>Bootstrap téma od <a href="http://appstraptheme.com">AppStrap</a> | Copyright 2017 </p>
   </div>
   <div class="col-md-6">
 </div>
@@ -236,7 +174,7 @@
 </footer>
 <!--Hidden elements - excluded from jPanel Menu on mobile-->
 <div class="hidden-elements jpanel-menu-exclude">
-  
+
 </div>
 
 
@@ -262,7 +200,7 @@
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-73163740-1', 'auto');
+  ga('create', 'UA-93513441-1', 'auto');
   ga('send', 'pageview');
 
 </script>
