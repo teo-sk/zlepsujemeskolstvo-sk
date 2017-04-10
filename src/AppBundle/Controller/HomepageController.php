@@ -48,6 +48,8 @@ class HomepageController extends BaseController
             ->createQueryBuilder('c')
             ->where('c.parent IS NOT NULL')
             ->getQuery()
+            ->useQueryCache(true)
+            ->useResultCache(true)
             ->getResult();
 
         //fetch count
@@ -56,6 +58,8 @@ class HomepageController extends BaseController
             ->where('s.approved = :bool')
             ->setParameter('bool', true)
             ->getQuery()
+            ->useQueryCache(true)
+            ->useResultCache(true)
             ->getSingleScalarResult();
 
 
