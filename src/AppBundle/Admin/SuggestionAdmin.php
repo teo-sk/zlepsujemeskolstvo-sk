@@ -83,4 +83,10 @@ class SuggestionAdmin extends Admin
             ->add('fingerprint')
         ;
     }
+
+    public function getExportFields() {
+    return array('category','name','surname',
+        'organization','email', 'text', 'created'
+        );
+}
 }
