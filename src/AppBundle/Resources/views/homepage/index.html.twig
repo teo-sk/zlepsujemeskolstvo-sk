@@ -18,8 +18,8 @@
                               Veľmi pekne Vám ďakujeme za záujem podieľať sa na zlepšení vzdelávania na Slovensku formou podania pripomienok alebo podnetov k zverejnenému návrhu Národného programu rozvoja výchovy a vzdelávania <strong>„Učiace sa Slovensko“</strong>.
                           </p>
                           <p>
-                          Pripravili sme pre Vás formulár, ktorý zohľadňuje jednotlivé témy a ponúka užívateľský komfort. Zároveň nám pomôže s triedením a aplikáciou Vašich zaujímavých pripomienok alebo podnetov. 
-Jedinečná možnosť podieľať sa touto formou na tvorbe Národného programu rozvoja výchovy a vzdelávania „Učiace sa Slovensko“ bude pre odbornú, ale aj širokú verejnosť prístupná po dobu šiestich týždňov. 
+                          Pripravili sme pre Vás formulár, ktorý zohľadňuje jednotlivé témy a ponúka užívateľský komfort. Zároveň nám pomôže s triedením a aplikáciou Vašich zaujímavých pripomienok alebo podnetov.
+Jedinečná možnosť podieľať sa touto formou na tvorbe Národného programu rozvoja výchovy a vzdelávania „Učiace sa Slovensko“ bude pre odbornú, ale aj širokú verejnosť prístupná po dobu šiestich týždňov.
                           </p>
                           <p>
                           Podnety tím autorov po ukončení pripomienkovania vyhodnotí a spracuje pri definitívnom dopracovaní záverečnej verzie návrhu Národného programu rozvoja výchovy a vzdelávania “Učiace sa Slovensko”, ktorý predloží ministrovi školstva.
@@ -64,7 +64,7 @@ Jedinečná možnosť podieľať sa touto formou na tvorbe Národného programu 
       <div class="block testimonials margin-top-large"> <a name="suggestion-categories"></a>
         <h2 class="title-divider">
           <span>Kategórie <span class="de-em">podnetov</span></span>
-          <small>Tu vidíte 4 najnovšie a 4 najpopulárnejšie podnety pre jednotlivé kategórie</small>
+          <small>Kliknutím na kategóriu prezerajte podnety.</small>
       </h2>
       <div class="row">
           <div class="panel-group" id="list-accordion">
@@ -72,13 +72,7 @@ Jedinečná možnosť podieľať sa touto formou na tvorbe Národného programu 
                   <div class="panel panel-default">
                       <div class="panel-heading">
                         <h4 class="panel-title">
-                          <a href="{{path('category', {id: category.id})}}" aria-expanded="false" class="collapsed"> {{category.title}} <small class="text-muted">
-                                      {% transchoice category.allSuggestions|length %}
-
-                                      {0} Ešte žiadne podnety|{1} Jeden podnet |]1,4] %count% podnety celkovo |]4,Inf] %count% podnetov celkovo
-
-                                      {% endtranschoice %}
-                                    </small> </a>
+                          <a href="{{path('category', {id: category.id})}}" aria-expanded="false" class="collapsed"> {{category.title}} </a>
                         </h4>
                       </div>
                       <div id="collapseCategory{{loop.index}}" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
