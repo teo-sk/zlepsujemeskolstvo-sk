@@ -41,7 +41,7 @@ Jedinečná možnosť podieľať sa touto formou na tvorbe Národného programu 
                       <blockquote>
                           <p>Máme už {{count}} podnetov. Pridajte ten svoj!</p>
                       </blockquote>
-                      <a href="#add-suggestion" class="btn btn-lg btn-primary center-block">Pridať podnet</a>
+                      <p>Pridávanie podnetov bolo ukončené.</p>
                   </div>
               </div>
           </section>
@@ -87,20 +87,8 @@ Jedinečná možnosť podieľať sa touto formou na tvorbe Národného programu 
         <div class="block features">
           <h2 class="title-divider"><a name="add-suggestion"></a>
             <span>Pridať <span class="de-em">podnet</span></span>
-            <small>Pridajte váš podnet na zlepšenie školstva.</small>
+            <small>Pridávanie podnetov bolo ukončené.</small>
         </h2>
-        <div class="row">
-            {{ form_start(form, { 'attr' : { 'class': 'form-wrapper' } }) }}
-                {{ form_errors(form) }}
-
-                {{ form_row(form.category) }}
-                {{ form_row(form.name) }}
-                {{ form_row(form.surname) }}
-                {{ form_row(form.organization) }}
-                {{ form_row(form.email) }}
-                {{ form_row(form.text, { 'attr': { 'rows': '20' }}) }}
-            {{ form_end(form) }}
-        </div>
     </div>
     </div>
     </div>
